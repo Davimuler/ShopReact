@@ -1,0 +1,9 @@
+.MainContent{
+  background-color: lightblue;
+
+}
+
+.content{
+  grid-area:content;
+  background-color:darkorange;
+}
