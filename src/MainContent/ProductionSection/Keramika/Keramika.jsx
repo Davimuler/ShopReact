@@ -5,6 +5,7 @@ import Element from "../../../ShopElement/Element";
 
 const Keramika=(props)=>{
     return <div >
+        Keramika
         <Element/>
         <Element/>
         <Element/>

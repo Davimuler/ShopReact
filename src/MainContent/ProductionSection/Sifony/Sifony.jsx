@@ -5,6 +5,7 @@ import Element from "../../../ShopElement/Element";
 
 const Sifony=(props)=>{
     return <div >
+        Sifony
         <Element/>
         <Element/>
         <Element/>

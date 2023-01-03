@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas:
     "header header"
-    "side content "
+    "content content "
     "footer footer";
     grid-template-rows: 80px 1fr 60px;
     grid-template-columns: 22% 1fr;

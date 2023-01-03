@@ -5,6 +5,7 @@ import Element from "../../../ShopElement/Element";
 
 const DushGarnitura=(props)=>{
     return <div >
+        DushGarnitura
         <Element/>
         <Element/>
         <Element/>

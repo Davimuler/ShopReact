@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { Route, Routes } from "react-router";
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
@@ -14,15 +13,9 @@ const App = () =>  {
             <div className="header">
                 <Header/>
             </div>
-            <div className="navigation">
-                <ContentNav/>
-            </div>
+
             <div className="content">
-                <Routes>
-                    <Route path="/" element={ <MainContent/>}/>
-                    <Route path="/login/*" element={<Login/>}/>
-                    <Route path="/reg/*" element={<Reg/>}/>
-                </Routes>
+                <MainContent/>
             </div>
             {/*<div className="content">
                 <MainContent/>

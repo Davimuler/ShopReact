@@ -1,0 +1,16 @@
+.FirstPage{
+    background-color: lightblue;
+    display: grid;
+    grid-template-areas:"navbar content";
+    grid-template-columns: 22% 1fr;
+    grid-template-rows:  1fr;
+    grid-gap: 10px;
+}
+
+.content{
+    grid-area:content;
+}
+.navbar{
+    grid-area:navbar;
+    background-color:red;
+}

@@ -5,6 +5,7 @@ import Element from "../../../ShopElement/Element";
 
 const Smesitili=(props)=>{
     return <div >
+        Smesitili
         <Element/>
         <Element/>
         <Element/>

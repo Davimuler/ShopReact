@@ -5,6 +5,7 @@ import Element from "../../../ShopElement/Element";
 
 const Santechnika=(props)=>{
     return <div >
+        Santechnika
         <Element/>
         <Element/>
         <Element/>
