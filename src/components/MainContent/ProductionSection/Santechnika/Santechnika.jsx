@@ -1,11 +1,11 @@
 import React from "react";
-import Element from "../../../ShopElement/Element";
+import Element from "../../../../ShopElement/Element";
 
 
 
-const Moyki=(props)=>{
+const Santechnika=(props)=>{
     return <div >
-        Moyki
+        Santechnika
         <Element/>
         <Element/>
         <Element/>
@@ -16,4 +16,4 @@ const Moyki=(props)=>{
     </div>
 }
 
-export default Moyki;
+export default Santechnika;

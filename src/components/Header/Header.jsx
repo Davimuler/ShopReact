@@ -1,6 +1,7 @@
 import React from "react";
 import S from './Header.module.css'
 import {NavLink} from "react-router-dom";
+import Reg from "../../LoginRegistration/Registration/Registration";
 
 
 const Header = (props) => {
@@ -14,9 +15,12 @@ const Header = (props) => {
 
         <div className={S.HeaderElement}>Catalog</div>
         <input className={S.Input}/>
-        <img className={S.MainImg}
-             src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
-        <NavLink  className={S.RegLog} to={'/reg'}>register</NavLink>
+        <div onClick={()=>{}}>
+            <img className={S.MainImg}
+                 src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
+        </div>
+
+        <NavLink  className={S.RegLog} to={'/reg'}>regi</NavLink>
 
     </header>
 }

@@ -6,11 +6,12 @@ import Moyki from "./ProductionSection/Moyki/Moyki";
 import Sifony from "./ProductionSection/Sifony/Sifony";
 import DushGarnitura from "./ProductionSection/DushGarnitura/DushGarnitura";
 import Santechnika from "./ProductionSection/Santechnika/Santechnika";
-import ContentNav from "../Navigation/ContentNav/ContentNav";
 import {Route, Routes} from "react-router";
-import Login from "../LoginRegistration/Login/Login";
-import Reg from "../LoginRegistration/Registration/Registration";
+
+
 import FirstPage from "./FirstPage/FirstPage";
+import Login from "../../LoginRegistration/Login/Login";
+import Reg from "../../LoginRegistration/Registration/Registration";
 
 const MainContent = (props) => {
     return <div>

@@ -1,11 +1,11 @@
 import React from "react";
-import Element from "../../../ShopElement/Element";
+import Element from "../../../../ShopElement/Element";
 
 
 
-const Smesitili=(props)=>{
+const Moyki=(props)=>{
     return <div >
-        Smesitili
+        Moyki
         <Element/>
         <Element/>
         <Element/>
@@ -16,4 +16,4 @@ const Smesitili=(props)=>{
     </div>
 }
 
-export default Smesitili;
+export default Moyki;

@@ -1,11 +1,10 @@
 import React from "react";
-import Element from "../../../ShopElement/Element";
+import Element from "../../../../ShopElement/Element";
 
 
 
-const Sifony=(props)=>{
+const Smesitili=(props)=>{
     return <div >
-        Sifony
         <Element/>
         <Element/>
         <Element/>
@@ -16,4 +15,4 @@ const Sifony=(props)=>{
     </div>
 }
 
-export default Sifony;
+export default Smesitili;

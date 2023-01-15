@@ -1,11 +1,11 @@
 import React from "react";
-import Element from "../../../ShopElement/Element";
+import Element from "../../../../ShopElement/Element";
 
 
 
-const Keramika=(props)=>{
+const Sifony=(props)=>{
     return <div >
-        Keramika
+        Sifony
         <Element/>
         <Element/>
         <Element/>
@@ -16,4 +16,4 @@ const Keramika=(props)=>{
     </div>
 }
 
-export default Keramika;
+export default Sifony;

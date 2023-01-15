@@ -1,11 +1,12 @@
 import React from "react";
-import Element from "../../../ShopElement/Element";
+import Element from "../../../../ShopElement/Element";
 
 
 
-const DushGarnitura=(props)=>{
+
+const Keramika=(props)=>{
     return <div >
-        DushGarnitura
+        Keramika
         <Element/>
         <Element/>
         <Element/>
@@ -16,4 +17,4 @@ const DushGarnitura=(props)=>{
     </div>
 }
 
-export default DushGarnitura;
+export default Keramika;
