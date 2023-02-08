@@ -1,0 +1,22 @@
+import React from 'react';
+
+const Users = (props) => {
+    return (
+        <div >
+            <div>
+               Id: {props.id}
+            </div>
+            <div>
+              Email:{props.email}
+            </div>
+            <div>
+               Name: {props.name}
+            </div>
+            <div>
+                {props.avatarUrl}
+            </div>
+        </div>
+    );
+};
+
+export default Users;

@@ -1,0 +1,8 @@
+.formReg{
+   text-align: center;
+}
+.formReg input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 400px;
+}
