@@ -1,22 +1,9 @@
-import React from 'react';
+.user{
+    margin: 20px;
 
-const Users = (props) => {
-    return (
-        <div >
-            <div>
-               Id: {props.id}
-            </div>
-            <div>
-              Email:{props.email}
-            </div>
-            <div>
-               Name: {props.name}
-            </div>
-            <div>
-                {props.avatarUrl}
-            </div>
-        </div>
-    );
-};
-
-export default Users;
+}
+.user img {
+    border-radius: 8px;
+    width: 150px;
+    height: 200px;
+}

@@ -5,6 +5,9 @@ import Reg from "../../LoginRegistration/Registration/Registration";
 
 
 const Header = (props) => {
+    let updateBasketVision=()=>{
+        props.UpdateBasketVision(!props.isBasketActive? true:false)
+    }
     return <header className={S.MainHeader}>
         <NavLink to={'/'}>
             <img className={S.MainImg}
@@ -12,16 +15,15 @@ const Header = (props) => {
             <div className={S.HeaderElement}>Name of site</div>
         </NavLink>
 
-
         <div className={S.HeaderElement}>Catalog</div>
         <input className={S.Input}/>
-        <div onClick={()=>{}}>
-            <img className={S.MainImg}
+        <div onClick={updateBasketVision}>
+            <img className={S.basketImage}
                  src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
         </div>
 
-        <NavLink  className={S.RegLog} to={'/reg'}>regi</NavLink>
-
+        <NavLink  className={S.RegLog} to={'/registration'}>Sign up</NavLink>
+        <NavLink  className={S.RegLog} to={'/login'}>Log in</NavLink>
     </header>
 }
 export default Header;

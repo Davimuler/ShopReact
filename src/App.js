@@ -8,23 +8,20 @@ import Login from "./LoginRegistration/Login/Login";
 import Reg from "./LoginRegistration/Registration/Registration";
 import MainContent from "./components/MainContent/MainContent";
 import Basket from "./pages/Basket/Basket";
-import {useState} from "react";
+import {HeaderContainer} from "./components/Header/HeaderContainer";
+import {MainContentContainer} from "./components/MainContent/MainContentContainer";
+
 
 const App = () =>  {
-    const [basketActive,setBasketActive]=useState(true)
+
     return (
         <div className="App">
-            <Basket active={basketActive} setActive={setBasketActive}/>
             <div className="header">
-                <Header/>
+              <HeaderContainer/>
             </div>
-
             <div className="content">
-                <MainContent/>
+                <MainContentContainer/>
             </div>
-            {/*<div className="content">
-                <MainContent/>
-            </div>*/}
             <div className="Footer">
                 <Footer/>
             </div>

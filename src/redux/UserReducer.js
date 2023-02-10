@@ -1,20 +1,20 @@
-const UPDATE_BASKET_VISION = "UPDATE-BASKET-VISION";
-
+const SET_USERS = "SET-USERS";
 let InitialState={
-    isBasketActive:false
+data:[]
 }
 
-const HeaderReducer = (state=InitialState, action) => {
-    switch (action.type) {
-        case UPDATE_BASKET_VISION:
-        {
+const UserReducer = (state=InitialState, action) => {
+   switch (action.type) {
+      case SET_USERS:
+      {
 
-            return {...state,isBasketActive:action.isActive}
+         return {...state,data:action.data}
 
-        }
-        default:
-            return state;
-    }
+      }
+      default:
+         return state;
+   }
 };
-export const UpdateBasketVision=(isActive)=>({type:UPDATE_BASKET_VISION,isActive});
-export default HeaderReducer;
+
+export const setUsers=(data)=>({type:SET_USERS,data});
+export default UserReducer;
