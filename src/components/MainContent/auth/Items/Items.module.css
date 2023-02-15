@@ -1,0 +1,16 @@
+.Items{
+    display: grid;
+    grid-template-areas:"ItemsArea NewItem";
+    grid-template-columns:1fr 30%;
+    grid-gap: 10px;
+    height: 100vh;
+    margin: 0;
+}
+.ItemsArea{
+    grid-area:ItemsArea;
+    background-color: green;
+}
+.NewItem{
+    grid-area:NewItem;
+    background-color:red;
+}

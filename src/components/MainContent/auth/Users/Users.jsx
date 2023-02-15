@@ -1,6 +1,6 @@
 import React from 'react';
 import OneUser from "./OneUser/OneUser";
-import axios, {apiGetUsers} from "../../../api/api.js";
+import axios, {apiGetUsers} from "../../../../api/api.js";
 
 
 class Users extends React.Component {
@@ -10,11 +10,6 @@ class Users extends React.Component {
                 this.props.setUsers(data)
             }
         })
-            // axios.get('/users').then(response => {
-            //     if (this.props.data.length === 0) {
-            //         this.props.setUsers(response.data)
-            //     }
-            // })
         }
     render() {
         return (

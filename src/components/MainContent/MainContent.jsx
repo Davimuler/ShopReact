@@ -11,8 +11,10 @@ import FirstPage from "./FirstPage/FirstPage";
 import Login from "../../LoginRegistration/Login/Login";
 import Reg from "../../LoginRegistration/Registration/Registration";
 import Basket from "../../pages/Basket/Basket";
-import Users from "./Users/Users";
+import Users from "./auth/Users/Users";
 import Test from "./test/test";
+import Items from "./auth/Items/Items";
+
 
 
 
@@ -23,6 +25,8 @@ const MainContent = (props) => {
 
             <Route path="/" element={<FirstPage/>}/>
             <Route path="/test" element={<Test/>}/>
+            <Route path="/auth/items" element={<Items setItems={props.setItems} itemsData={props.itemsData}/>}/>
+
             <Route path="/users" element={<Users data={props.data} setUsers={props.setUsers}/>}/>
             <Route path="/keramika" element={<Keramika/>}/>
             <Route path="/smesitili" element={<Smesitili/>}/>*/}

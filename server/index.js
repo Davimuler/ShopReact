@@ -14,6 +14,7 @@ import checkAuth from './utils/checkAuth.js'
 import *as UserController from './controllers/UserController.js'
 import *as PostController from './controllers/PostController.js'
 import PostModel from "./models/Post.js";
+import ItemModel from './models/Item.js'
 
 mongoose.set("strictQuery", false);
 mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net/blog?retryWrites=true&w=majority').then(
@@ -43,7 +44,6 @@ app.post('/test',async (req,res)=>{
 
         res.json(test)
     }catch(err){
-        console.log(req.body.fullName);
         res.status(500).json({
             message:'Error to create test'
         })
@@ -53,9 +53,41 @@ app.post('/test',async (req,res)=>{
 // app.get('/post',PostController.getAll)
 // app.get('/post/:id',PostController.getOne)
 app.post('/post',postCreateValidation,PostController.create)
-// app.delete('/post',PostController.remove)
-// app.patch('/post',PostController.update)
 
+app.post('/item',async(req, res)=>{
+    try{
+        const doc=new ItemModel({
+            fullName:req.body.fullName,
+            price:req.body.price,
+            description:req.body.description,
+            viewCounts:req.body.viewCounts,
+            characteristics:req.body.characteristics,
+            section:req.body.section
+        })
+        const item=await doc.save();
+
+        res.json(item)
+    }catch (err){
+        res.status(500).json({
+            message:'Error to create new item'})
+    }
+})
+
+app.get('/items', async (req,res)=>{
+    try {
+        const items = await ItemModel.find({});
+        if (!items) {
+            return res.status(404).json({
+                message: 'No items',
+            });
+        }
+        res.json(items);
+    }catch (err){
+        res.status(500).json({
+            message: 'No access',
+        });
+    }
+})
 
 app.get('/auth/me',checkAuth,UserController.getMe)
 app.get('/users',async(req, res)=>{
@@ -72,7 +104,6 @@ app.get('/users',async(req, res)=>{
         res.json(users);
 
     }catch (err) {
-        console.log(err);
         res.status(500).json({
             message: 'No access',
         });
