@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import cors from  'cors'
 import bcrypt from "bcrypt"
+import multer from 'multer'
 
 import {validationResult} from 'express-validator'
 import {registerValidation, loginValidation, postCreateValidation} from './Validations/validations.js'
@@ -27,9 +28,23 @@ mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net
 
 const app=express();
 
+const storage=multer.diskStorage({
+    destination:(_,__,cb)=>{
+cb(null,'uploads')
+},
+    filename:(_,file,cb)=>{
+        cb(null,file.originalname)
+    },
+    }
+);
+
+const upload=multer({storage})
+
 app.use(express.json())
 
 app.use(cors());
+
+app.use('/uploads',express.static('uploads'))
 
 app.get('/',(req, res)=>{
 res.send('gello')
@@ -53,6 +68,12 @@ app.post('/test',async (req,res)=>{
 // app.get('/post',PostController.getAll)
 // app.get('/post/:id',PostController.getOne)
 app.post('/post',postCreateValidation,PostController.create)
+
+app.post('/upload',upload.single('image'),(req,res)=>{
+    res.json({
+        url:`/uploads${req.file.originalname}`
+    })
+})
 
 app.post('/item',async(req, res)=>{
     try{

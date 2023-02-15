@@ -144,6 +144,9 @@ const CreateItem = () => {
                    <input value={price} onBlur={blurHandler} name='price' onChange={priceHandler} placeholder='Price'/>
                 </div>
                 <div>
+                    <input  onBlur={blurHandler} name='section'  placeholder='Section'/>
+                </div>
+                <div>
                     <input value={description}  name='description' onChange={(e)=>{
                         setDescription(e.target.value)
                     }} placeholder='Description'/>
