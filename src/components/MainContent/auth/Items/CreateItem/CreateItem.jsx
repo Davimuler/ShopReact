@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import S from './CreateItem.module.css'
 import axios, {apiCreateItem} from "../../../../../api/api.js";
+import FileInput from "./FileInput/FileInput";
+import ShowImage from "./ShowImage/ShowImage";
 
 
 const CreateItem = () => {
@@ -24,6 +26,8 @@ const CreateItem = () => {
 
     const [featureDescription,setFeatureDescription]=useState('')
     const [featureDescriptionError,setFeatureDescriptionError]=useState('')
+
+    const [imageData, setImageData] = useState(null);
 
     const [featureValid,setFeatureValid]=useState(false)
 
@@ -124,14 +128,18 @@ const CreateItem = () => {
             fullName: fullName,
             price,
             description,
-            characteristics:features
+            characteristics:features,
+
         }).then(() => {
             setMessage('Added one item!')
             setFeatures([])
         })
     }
 
-
+    const onFileSelect=(data)=>{
+        setImageData(data)
+        axios.post('/upload',data).then(response=>console.log(response))
+    }
 
     return (
             <div >
@@ -150,6 +158,9 @@ const CreateItem = () => {
                     <input value={description}  name='description' onChange={(e)=>{
                         setDescription(e.target.value)
                     }} placeholder='Description'/>
+                </div>
+                <div>
+                    <FileInput onFileSelect={onFileSelect}/>
                 </div>
                 <div>
                     <input value={featureName} onChange={featureNameHandler} placeholder='Name of feature'/>{' : '}

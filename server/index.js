@@ -18,7 +18,10 @@ import PostModel from "./models/Post.js";
 import ItemModel from './models/Item.js'
 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net/blog?retryWrites=true&w=majority').then(
+mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net/blog?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(
     ()=>{
         console.log('DB OK')
     }
@@ -28,17 +31,31 @@ mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net
 
 const app=express();
 
-const storage=multer.diskStorage({
-    destination:(_,__,cb)=>{
-cb(null,'uploads')
-},
-    filename:(_,file,cb)=>{
-        cb(null,file.originalname)
-    },
-    }
-);
 
-const upload=multer({storage})
+const imageSchema = new mongoose.Schema({
+    name: String,
+    image: {
+        data: Buffer,
+        contentType: String
+    }
+});
+
+const Image = mongoose.model('Image', imageSchema);
+
+// const storage=multer.diskStorage({
+//     destination:(_,__,cb)=>{
+// cb(null,'uploads')
+// },
+//     filename:(_,file,cb)=>{
+//         cb(null,file.originalname)
+//     },
+//     }
+// );
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// const upload=multer({storage})
 
 app.use(express.json())
 
@@ -46,9 +63,43 @@ app.use(cors());
 
 app.use('/uploads',express.static('uploads'))
 
+
 app.get('/',(req, res)=>{
 res.send('gello')
 })
+
+app.post('/upload', upload.single('image'), async (req, res) => {
+    // Create a new item document with the uploaded image data
+    // const image = new Image({
+    //     name: req.body.name,
+    //     image: {
+    //         data: req.file.buffer,
+    //         contentType: req.file.mimetype
+    //     }
+    //
+    //
+    // }
+
+    try{
+        const doc=new Image({
+            name: req.body.name,
+            image: {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            }
+        })
+        const test=await doc.save();
+
+        res.json(test)
+    }catch(err){
+        res.status(500).json({
+            message:'Error to add image'
+        })
+    }
+
+});
+
+
 app.post('/test',async (req,res)=>{
     try{
         const doc=new TestModel({
@@ -69,13 +120,11 @@ app.post('/test',async (req,res)=>{
 // app.get('/post/:id',PostController.getOne)
 app.post('/post',postCreateValidation,PostController.create)
 
-app.post('/upload',upload.single('image'),(req,res)=>{
-    res.json({
-        url:`/uploads${req.file.originalname}`
-    })
-})
+// app.post('/upload',upload.single('image'),(req,res)=>{
+//
+// })
 
-app.post('/item',async(req, res)=>{
+app.post('/item',upload.single('image'),async(req, res)=>{
     try{
         const doc=new ItemModel({
             fullName:req.body.fullName,
@@ -83,7 +132,8 @@ app.post('/item',async(req, res)=>{
             description:req.body.description,
             viewCounts:req.body.viewCounts,
             characteristics:req.body.characteristics,
-            section:req.body.section
+            section:req.body.section,
+
         })
         const item=await doc.save();
 
@@ -93,6 +143,25 @@ app.post('/item',async(req, res)=>{
             message:'Error to create new item'})
     }
 })
+
+
+
+app.get('/images', async (req,res)=>{
+    try {
+        const images = await Image.find({});
+        if (!images) {
+            return res.status(404).json({
+                message: 'No images',
+            });
+        }
+        res.json(images);
+    }catch (err){
+        res.status(500).json({
+            message: 'No access',
+        });
+    }
+})
+
 
 app.get('/items', async (req,res)=>{
     try {

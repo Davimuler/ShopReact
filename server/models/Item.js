@@ -23,9 +23,12 @@ const ItemSchema=new mongoose.Schema({
     },
     section:{
         type:String,
-        required:true
+
     },
-    image:String
+    image: {
+        data: Buffer,
+        contentType: String
+    }
 
 },{
     timestamps:true,
