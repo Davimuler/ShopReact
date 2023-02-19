@@ -137,10 +137,14 @@ const CreateItem = () => {
         data.append('characteristics', JSON.stringify(features));
         data.append('image', imageData);
         setImageData(data)
-        axios.post('/upload',data).then(response=>{
+        axios.post('/newItem',data).then(response=>{
             console.log(response)
             fieldsEraser()
         })
+        // apiCreateItem(data).then(() => {
+        //     setMessage('Added one item!')
+        //     setFeatures([])
+        // })
     }
 
     return (

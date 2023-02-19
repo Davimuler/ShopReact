@@ -58,19 +58,12 @@ app.use('/uploads',express.static('uploads'))
 
 
 app.get('/',(req, res)=>{
-res.send('gello')
+    res.send('gello')
 })
 
-app.post('/upload', upload.single('image'), async (req, res) => {
+app.post('/newItem', upload.single('image'), async (req, res) => {
 
     try{
-        // const doc=new Image({
-        //     name: req.body.fullName,
-        //     image: {
-        //         data: req.file.buffer,
-        //         contentType: req.file.mimetype
-        //     }
-        // })
 
         const doc =NewItemModel({
             fullName:req.body.fullName,
@@ -99,20 +92,20 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
 
 app.post('/test',async (req,res)=>{
-    try{
-        const doc=new TestModel({
-            fullName:req.body.fullName,
-            email:req.body.email
-        })
-        const test=await doc.save();
+        try{
+            const doc=new TestModel({
+                fullName:req.body.fullName,
+                email:req.body.email
+            })
+            const test=await doc.save();
 
-        res.json(test)
-    }catch(err){
-        res.status(500).json({
-            message:'Error to create test'
-        })
+            res.json(test)
+        }catch(err){
+            res.status(500).json({
+                message:'Error to create test'
+            })
+        }
     }
-}
 )
 // app.get('/post',PostController.getAll)
 // app.get('/post/:id',PostController.getOne)
@@ -131,10 +124,10 @@ app.post('/item',upload.single('image'),async(req, res)=>{
             // viewCounts:req.body.viewCounts,
             // characteristics:JSON.parse(req.body.characteristics),
             // section:req.body.section,
-             image: {
-                 data: req.file.buffer,
-                 contentType: req.file.mimetype
-             }
+            image: {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            }
 
         })
         const item=await doc.save();
@@ -167,7 +160,7 @@ app.get('/images', async (req,res)=>{
 
 app.get('/items', async (req,res)=>{
     try {
-        const items = await ItemModel.find({});
+        const items = await NewItemModel.find({});
         if (!items) {
             return res.status(404).json({
                 message: 'No items',

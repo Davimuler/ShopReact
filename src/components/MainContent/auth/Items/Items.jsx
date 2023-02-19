@@ -9,16 +9,18 @@ import ShowImage from "./CreateItem/ShowImage/ShowImage";
 
 const Items=(props)=>{
     const [data, setData] = useState([]);
+
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-console.log(images)
+
         axios.get('/items').then((res)=>{
                props.setItems(res.data)
+            console.log(res.data)
             })
-        axios.get('/images').then((res)=>{console.log(res.data)
-            setImages(res.data)
-        })
+        // axios.get('/images').then((res)=>{console.log(res.data)
+        //     setImages(res.data)
+        // })
         // console.log('Images:'+images)
     }, []);
 
@@ -31,9 +33,9 @@ console.log(images)
     return<div className={S.Items}>
         <div className={S.ItemsArea}>
             {data.length === 0 ? <></> : data.map(
-                i=><OneItem  key={i._id} price={i.price} name={i.fullName}/>)}
-            {images.length===0? <></> :images.map(
-                i=><ShowImage key={i._id}  image={i.image}/>)}
+                i=><OneItem  key={i._id}  description={i.description} features={i.characteristics} image={i.image} price={i.price} name={i.fullName}/>)}
+            {/*{images.length===0? <></> :images.map(*/}
+            {/*    i=><ShowImage key={i._id}  image={i.image}/>)}*/}
 
         </div>
         <div className={S.NewItem}>
