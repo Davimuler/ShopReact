@@ -17,6 +17,8 @@ import *as PostController from './controllers/PostController.js'
 import PostModel from "./models/Post.js";
 import ItemModel from './models/Item.js'
 
+import NewItemModel from "./models/NewItem.js";
+
 mongoose.set("strictQuery", false);
 mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net/blog?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -42,15 +44,6 @@ const imageSchema = new mongoose.Schema({
 
 const Image = mongoose.model('Image', imageSchema);
 
-// const storage=multer.diskStorage({
-//     destination:(_,__,cb)=>{
-// cb(null,'uploads')
-// },
-//     filename:(_,file,cb)=>{
-//         cb(null,file.originalname)
-//     },
-//     }
-// );
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -69,24 +62,29 @@ res.send('gello')
 })
 
 app.post('/upload', upload.single('image'), async (req, res) => {
-    // Create a new item document with the uploaded image data
-    // const image = new Image({
-    //     name: req.body.name,
-    //     image: {
-    //         data: req.file.buffer,
-    //         contentType: req.file.mimetype
-    //     }
-    //
-    //
-    // }
 
     try{
-        const doc=new Image({
-            name: req.body.name,
+        // const doc=new Image({
+        //     name: req.body.fullName,
+        //     image: {
+        //         data: req.file.buffer,
+        //         contentType: req.file.mimetype
+        //     }
+        // })
+
+        const doc =NewItemModel({
+            fullName:req.body.fullName,
+            price:req.body.price,
+            description:req.body.description,
+            viewCounts:req.body.viewCounts,
+            characteristics:JSON.parse(req.body.characteristics),
+            section:req.body.section,
             image: {
                 data: req.file.buffer,
                 contentType: req.file.mimetype
             }
+
+
         })
         const test=await doc.save();
 
@@ -127,12 +125,16 @@ app.post('/post',postCreateValidation,PostController.create)
 app.post('/item',upload.single('image'),async(req, res)=>{
     try{
         const doc=new ItemModel({
-            fullName:req.body.fullName,
-            price:req.body.price,
-            description:req.body.description,
-            viewCounts:req.body.viewCounts,
-            characteristics:req.body.characteristics,
-            section:req.body.section,
+            // fullName:req.body.fullName,
+            // price:req.body.price,
+            // description:req.body.description,
+            // viewCounts:req.body.viewCounts,
+            // characteristics:JSON.parse(req.body.characteristics),
+            // section:req.body.section,
+             image: {
+                 data: req.file.buffer,
+                 contentType: req.file.mimetype
+             }
 
         })
         const item=await doc.save();

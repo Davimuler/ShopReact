@@ -16,13 +16,10 @@ export const apiCreateUser=(usersData)=>{
     }).then(response=>console.log(response))
 }
 export const apiCreateItem=(itemData)=>{
-    return instance.post('/item', {
-        fullName:itemData.fullName,
-        price:itemData.price,
-        description:itemData.description,
-        characteristics:itemData.characteristics
-
-    }).then(response=>console.log(response))
+    return instance.post('/item', itemData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }}).then(response=>console.log(response))
 }
 
 export default instance;

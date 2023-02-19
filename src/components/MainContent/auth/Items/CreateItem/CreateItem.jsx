@@ -12,7 +12,7 @@ const CreateItem = () => {
 
     const [description,setDescription]=useState('')
 
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState('')
     const [priceDirty, setPriceDirty] = useState(false);
     const [priceError, setPriceError] = useState('Price is required!');
 
@@ -121,24 +121,26 @@ const CreateItem = () => {
         setFeatureValid(false)
     }
 
-
-    const Create = () => {
-
-        apiCreateItem({
-            fullName: fullName,
-            price,
-            description,
-            characteristics:features,
-
-        }).then(() => {
-            setMessage('Added one item!')
-            setFeatures([])
-        })
+    const fieldsEraser=()=>{
+        setMessage('Added one item!')
+        setFeatures([])
+        setPrice('')
+        setFullName('')
+        setDescription('')
     }
 
+
     const onFileSelect=(data)=>{
+        data.append('fullName', fullName);
+        data.append('price', price);
+        data.append('description', description);
+        data.append('characteristics', JSON.stringify(features));
+        data.append('image', imageData);
         setImageData(data)
-        axios.post('/upload',data).then(response=>console.log(response))
+        axios.post('/upload',data).then(response=>{
+            console.log(response)
+            fieldsEraser()
+        })
     }
 
     return (
@@ -152,16 +154,14 @@ const CreateItem = () => {
                    <input value={price} onBlur={blurHandler} name='price' onChange={priceHandler} placeholder='Price'/>
                 </div>
                 <div>
-                    <input  onBlur={blurHandler} name='section'  placeholder='Section'/>
+                    {/*<input  onBlur={blurHandler} name='section'  placeholder='Section'/>*/}
                 </div>
                 <div>
                     <input value={description}  name='description' onChange={(e)=>{
                         setDescription(e.target.value)
                     }} placeholder='Description'/>
                 </div>
-                <div>
-                    <FileInput onFileSelect={onFileSelect}/>
-                </div>
+
                 <div>
                     <input value={featureName} onChange={featureNameHandler} placeholder='Name of feature'/>{' : '}
                     <input value={featureDescription} onChange={featureDescriptionHandler} placeholder='Feature description'/>
@@ -180,7 +180,9 @@ const CreateItem = () => {
                         </div>
                     ))}
                 </div>
-                <button disabled={!formValid} onClick={Create}>Create</button>
+                <div>
+                    <FileInput isAble={formValid} onFileSelect={onFileSelect}/>
+                </div>
                 <div style={{color: 'green'}}>{message}</div>
             </div>
     );

@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
-const ItemSchema=new mongoose.Schema({
+const NewItemSchema = new mongoose.Schema({
     fullName:{
         type:String ,
         unique:true,
-        // required:true
+        required:true
     },
     price:{
         type:Number,
-        // required:true
+        required:true
     },
     description:{
         type:String
@@ -29,9 +29,10 @@ const ItemSchema=new mongoose.Schema({
         data: Buffer,
         contentType: String
     }
-
 },{
     timestamps:true,
-})
+});
 
-export default mongoose.model('Item',ItemSchema);
+
+
+export default mongoose.model('NewItem',NewItemSchema);

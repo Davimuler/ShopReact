@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 const FileInput=(props)=>{
     const [selectedFile, setSelectedFile] = useState(null);
+    const [isValid,setIsValid]=useState(false)
 
     function handleFileSelect(event) {
         setSelectedFile(event.target.files[0]);
+        setIsValid(true)
     }
 
     function handleSubmit(event) {
@@ -12,8 +14,8 @@ const FileInput=(props)=>{
         if (selectedFile) {
             const formData = new FormData();
             formData.append('image', selectedFile);
-            // Call a function to handle the form data (e.g. upload the file to the server)
             props.onFileSelect(formData);
+            setIsValid(false)
         }
     }
 
@@ -23,7 +25,10 @@ const FileInput=(props)=>{
                 Select file:
                 <input type="file" onChange={handleFileSelect} />
             </label>
-            <button type="submit">Upload</button>
+            <div>
+                <button disabled={!(props.isAble&&isValid)} type="submit">Create</button>
+            </div>
+
         </form>
     );
 }
