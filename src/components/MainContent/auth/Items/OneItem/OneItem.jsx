@@ -4,11 +4,15 @@ import ShowImage from "../CreateItem/ShowImage/ShowImage";
 
 
 const OneItem = (props) => {
-    console.log(props)
     return (
         <div  className={S.Item}>
             <div>
                 <ShowImage image={props.image}/>
+            </div>
+            <div>
+                <button onClick={()=>{
+                    props.deleteItemHandler(props.id)
+                }} >delete</button>
             </div>
             <div>
                Name of item:{props.name}
@@ -18,6 +22,9 @@ const OneItem = (props) => {
           </div>
             <div>
                 Description:{props.description}
+            </div>
+            <div>
+                Section:{props.section}
             </div>
             <div>
                 Features:

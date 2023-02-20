@@ -3,9 +3,12 @@ import S from './CreateItem.module.css'
 import axios, {apiCreateItem} from "../../../../../api/api.js";
 import FileInput from "./FileInput/FileInput";
 import ShowImage from "./ShowImage/ShowImage";
+import SectionSelector from "./SectionSelector/SectionSelector";
 
 
 const CreateItem = () => {
+    const [section,setSection]=useState('')
+
     const [fullName, setFullName] = useState('')
     const [fullNameDirty, setFullNameDirty] = useState(false);
     const [fullNameError, setFullNameError] = useState('Name of item can not be empty');
@@ -136,25 +139,23 @@ const CreateItem = () => {
         data.append('description', description);
         data.append('characteristics', JSON.stringify(features));
         data.append('image', imageData);
+        data.append('section',section);
         setImageData(data)
-        axios.post('/newItem',data).then(response=>{
-            console.log(response)
+        axios.post('/newItem',data).then(res=>{
             fieldsEraser()
         })
-        // apiCreateItem(data).then(() => {
-        //     setMessage('Added one item!')
-        //     setFeatures([])
-        // })
     }
-
+    const getSection=(value)=>{
+        setSection(value)
+    }
     return (
             <div >
                 <div>
-                    {(fullNameError && fullNameDirty) && <div style={{color: 'red'}}>{fullNameError}</div>}
+                    {(fullNameError && fullNameDirty) && <div >{fullNameError}</div>}
                     <input value={fullName} onBlur={blurHandler} name='name' onChange={nameHandler} placeholder='Name'/>
                 </div>
                 <div>
-                    {(priceError && priceDirty) && <div style={{color: 'red'}}>{priceError}</div>}
+                    {(priceError && priceDirty) && <div >{priceError}</div>}
                    <input value={price} onBlur={blurHandler} name='price' onChange={priceHandler} placeholder='Price'/>
                 </div>
                 <div>
@@ -184,10 +185,12 @@ const CreateItem = () => {
                         </div>
                     ))}
                 </div>
+                <SectionSelector getSection={getSection}/>
                 <div>
                     <FileInput isAble={formValid} onFileSelect={onFileSelect}/>
                 </div>
                 <div style={{color: 'green'}}>{message}</div>
+
             </div>
     );
 };

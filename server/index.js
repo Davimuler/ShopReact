@@ -19,6 +19,10 @@ import ItemModel from './models/Item.js'
 
 import NewItemModel from "./models/NewItem.js";
 
+import SectionModel from "./models/Sections.js"
+import NewItem from "./models/NewItem.js";
+
+
 mongoose.set("strictQuery", false);
 mongoose.connect('mongodb+srv://Davimuler:135792468@cluster0.zfojr0v.mongodb.net/blog?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -59,6 +63,54 @@ app.use('/uploads',express.static('uploads'))
 
 app.get('/',(req, res)=>{
     res.send('gello')
+})
+
+app.post('/section',async (req,res)=>{
+        try{
+            const doc=new SectionModel({
+                sectionName:req.body.sectionName,
+            })
+            const section=await doc.save();
+console.log(req.body.sectionName)
+            res.json(section)
+        }catch(err){
+
+            res.status(500).json({
+                message:'Error to create a new section'
+            })
+        }
+    }
+)
+app.get('/sections',async (req,res)=>{
+    try {
+        const sections = await SectionModel.find({});
+        if (!sections) {
+            return res.status(404).json({
+                message: 'No sections',
+            });
+        }
+        res.json(sections);
+    }catch (err){
+        res.status(500).json({
+            message: 'No access',
+        });
+    }
+})
+
+app.delete('/newItem',async (req, res)=>{
+    try{
+        const id = req.body.id;
+         NewItem.deleteOne({ _id: id }, (err, result)=> {
+            if (err) throw err;
+            if (result.deletedCount === 0) {
+                res.status(404).send("Object not found");
+            } else {
+                res.status(204).send();
+            }
+        });
+    }catch(err){
+
+    }
 })
 
 app.post('/newItem', upload.single('image'), async (req, res) => {

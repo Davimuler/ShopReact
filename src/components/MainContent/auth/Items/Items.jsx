@@ -16,27 +16,21 @@ const Items=(props)=>{
 
         axios.get('/items').then((res)=>{
                props.setItems(res.data)
-            console.log(res.data)
             })
-        // axios.get('/images').then((res)=>{console.log(res.data)
-        //     setImages(res.data)
-        // })
-        // console.log('Images:'+images)
     }, []);
 
     useEffect(() => {
         setData(props.itemsData)
     }, [props.itemsData]);
 
-
+const deleteItemHandler=(id)=>{
+    axios.delete('/newItem', { data: { id } }).then()
+}
 
     return<div className={S.Items}>
         <div className={S.ItemsArea}>
             {data.length === 0 ? <></> : data.map(
-                i=><OneItem  key={i._id}  description={i.description} features={i.characteristics} image={i.image} price={i.price} name={i.fullName}/>)}
-            {/*{images.length===0? <></> :images.map(*/}
-            {/*    i=><ShowImage key={i._id}  image={i.image}/>)}*/}
-
+                i=><OneItem deleteItemHandler={deleteItemHandler} section={i.section} id={i._id}  key={i._id}  description={i.description} features={i.characteristics} image={i.image} price={i.price} name={i.fullName}/>)}
         </div>
         <div className={S.NewItem}>
             <CreateItem/>
