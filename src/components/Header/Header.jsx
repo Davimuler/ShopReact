@@ -1,12 +1,12 @@
 import React from "react";
 import S from './Header.module.css'
 import {NavLink} from "react-router-dom";
-import Reg from "../../LoginRegistration/Registration/Registration";
 
 
 const Header = (props) => {
-    let updateBasketVision=()=>{
+    const updateBasketVision=()=>{
         props.UpdateBasketVision(!props.isBasketActive? true:false)
+        if(!props.isBasketActive)props.incrementNotificationCount(0)
     }
     return <header className={S.MainHeader}>
         <NavLink to={'/'}>
@@ -17,11 +17,12 @@ const Header = (props) => {
 
         <div className={S.HeaderElement}>Catalog</div>
         <input className={S.Input}/>
+
         <div onClick={updateBasketVision}>
             <img className={S.basketImage}
                  src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
         </div>
-
+        {!props.notificationCount? <></>: <span className={S.notificationCount}>{props.notificationCount}</span>}
         <NavLink  className={S.RegLog} to={'/registration'}>Sign up</NavLink>
         <NavLink  className={S.RegLog} to={'/login'}>Log in</NavLink>
     </header>

@@ -1,24 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import S from "./FistPage.module.css"
 
 
 import ContentNav from "../../../Navigation/ContentNav/ContentNav";
 import Element from "../../../ShopElement/Element";
+import OneItem from "../auth/Items/OneItem/OneItem";
 
-const FirstPage=(props)=>{
+
+const FirstPage = (props) => {
+
+    const [data, setData] = useState(props.data);
+
+    useEffect(() => {
+        setData(props.data)
+    }, [props.data])
+console.log(data)
     return <div className={S.FirstPage}>
-    <div className={S.navbar}>
-        <ContentNav></ContentNav>
-    </div>
+        <div className={S.navbar}>
+            <ContentNav></ContentNav>
+        </div>
         <div className={S.content}>
-        <Element/>
-            <Element/>
-            <Element/>  <Element/>
-            <Element/>  <Element/>
-            <Element/>
-            <Element/>  <Element/>
-            <Element/>  <Element/>
-            <Element/>  <Element/>  <Element/>
+            { data.length === 0 ? <></> : data.map(
+                i=> <Element key={i._id} fullName={i.fullName} notificationCount={props.notificationCount}
+                             incrementNotificationCount={props.incrementNotificationCount}/>)}
         </div>
 
     </div>

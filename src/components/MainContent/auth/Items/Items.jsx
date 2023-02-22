@@ -3,7 +3,6 @@ import axios from "../../../../api/api.js";
 import OneItem from "./OneItem/OneItem";
 import S from './Items.module.css'
 import CreateItem from "./CreateItem/CreateItem";
-import ShowImage from "./CreateItem/ShowImage/ShowImage";
 
 
 

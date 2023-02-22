@@ -1,18 +1,24 @@
 import React from 'react';
 import S from './OneItem.module.css'
 import ShowImage from "../CreateItem/ShowImage/ShowImage";
+import Button from '@mui/material/Button';
 
 
 const OneItem = (props) => {
     return (
         <div  className={S.Item}>
             <div>
+
+            </div>
+            <div>
                 <ShowImage image={props.image}/>
             </div>
             <div>
-                <button onClick={()=>{
+                <Button onClick={()=>{
                     props.deleteItemHandler(props.id)
-                }} >delete</button>
+                }} size="small" variant="contained"  color="primary">
+                    Delete
+                </Button>
             </div>
             <div>
                Name of item:{props.name}

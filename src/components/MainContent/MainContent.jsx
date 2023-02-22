@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import S from './MainContent.module.css'
 import Keramika from "./ProductionSection/Keramika/Keramika";
 import Smesitili from "./ProductionSection/Smesitili/Smesitili";
@@ -14,19 +14,28 @@ import Basket from "../../pages/Basket/Basket";
 import Users from "./auth/Users/Users";
 import Test from "./test/test";
 import Items from "./auth/Items/Items";
+import axios from "../../api/api.js";
+
 
 
 
 
 const MainContent = (props) => {
+
+
+    useEffect(() => {
+        axios.get('/items').then((res)=>{
+            props.setItems(res.data)
+        })
+    }, []);
     return <div>
         {props.isBasketActive&&<Basket setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
+
         <Routes>
 
-            <Route path="/" element={<FirstPage/>}/>
+            <Route path="/" element={<FirstPage data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
             <Route path="/test" element={<Test/>}/>
             <Route path="/auth/items" element={<Items setItems={props.setItems} itemsData={props.itemsData}/>}/>
-
             <Route path="/users" element={<Users data={props.data} setUsers={props.setUsers}/>}/>
             <Route path="/keramika" element={<Keramika/>}/>
             <Route path="/smesitili" element={<Smesitili/>}/>*/}
