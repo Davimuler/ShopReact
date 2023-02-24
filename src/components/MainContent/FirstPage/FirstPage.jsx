@@ -21,7 +21,7 @@ console.log(data)
         </div>
         <div className={S.content}>
             { data.length === 0 ? <></> : data.map(
-                i=> <Element key={i._id} fullName={i.fullName} notificationCount={props.notificationCount}
+                i=> <Element data={i} key={i._id} notificationCount={props.notificationCount}
                              incrementNotificationCount={props.incrementNotificationCount}/>)}
         </div>
 

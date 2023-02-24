@@ -29,7 +29,7 @@ const MainContent = (props) => {
         })
     }, []);
     return <div>
-        {props.isBasketActive&&<Basket setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
+        {props.isBasketActive&&<Basket itemsToBuy={props.itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
 
         <Routes>
 
