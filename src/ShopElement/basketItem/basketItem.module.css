@@ -1,0 +1,10 @@
+.item{
+    float:left;
+    padding:0px 150px 0px 0px;
+    margin-bottom: 50px;
+}
+.item input{
+    width: 50px;
+    height: 20px;
+    text-align: center;
+}

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import S from './MainContent.module.css'
 import Keramika from "./ProductionSection/Keramika/Keramika";
 import Smesitili from "./ProductionSection/Smesitili/Smesitili";
@@ -21,15 +21,21 @@ import axios from "../../api/api.js";
 
 
 const MainContent = (props) => {
+console.log(props.itemsToBuy)
+const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
 
 
+    useEffect(() => {
+        setItemsToBuy(props.itemsToBuy)
+    }, [props.itemsToBuy]);
     useEffect(() => {
         axios.get('/items').then((res)=>{
             props.setItems(res.data)
         })
     }, []);
+
     return <div>
-        {props.isBasketActive&&<Basket itemsToBuy={props.itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
+        {props.isBasketActive&&<Basket deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
 
         <Routes>
 

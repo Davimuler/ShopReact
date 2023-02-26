@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import MainContent from "./MainContent";
 import {incrementNotificationCount, UpdateBasketVision} from "../../redux/HeaderReducer";
-import {addItemToBuy, setUsers} from "../../redux/UserReducer";
+import {addItemToBuy, deleteItemToBuy, setUsers} from "../../redux/UserReducer";
 import {setItems} from "../../redux/ItemsReducer";
 
 
@@ -16,4 +16,4 @@ const mapStateToProps=(state)=>{
 }
 
 
-export const MainContentContainer=connect(mapStateToProps,{addItemToBuy,setUsers,incrementNotificationCount,setItems,UpdateBasketVision})(MainContent)
+export const MainContentContainer=connect(mapStateToProps,{addItemToBuy,deleteItemToBuy,setUsers,incrementNotificationCount,setItems,UpdateBasketVision})(MainContent)

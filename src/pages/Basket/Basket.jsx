@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import S from "./Basket.module.css"
+import BasketItem from "../../ShopElement/basketItem/basketItem";
+import {Button} from "@mui/material";
+import SubmitPurchase from "./submitPurchase/submitPurchase";
+
+
 
 const Basket = (props) => {
+    const [data, setData] = useState(props.itemsToBuy);
+
+    useEffect(() => {
+            setData(props.itemsToBuy);
+    }, [props.itemsToBuy]);
+
+    const deleteItemToPurchase=(id)=>{
+       props.deleteItemToBuy(id)
+    }
+    const total = props.itemsToBuy.reduce((acc, cur) => acc + cur.price, 0);
     console.log(props.itemsToBuy)
     return (
         <div className={S.modal} onClick={()=>{props.setActive(false)}} >
 
             <div onClick={e=>e.stopPropagation()} className={S.modal__content}>
-                <input/>
                 <img  onClick={()=>{props.setActive(false)}} className={S.closeCross} src="https://emojis.wiki/thumbs/emojis/cross-mark.webp"/>
 
-                {props.itemsToBuy.map((i)=><div>{i._id}</div>)}
+                {data.map((i)=><BasketItem deleteItemToPurchase={deleteItemToPurchase} data={i}/>)}
+               <SubmitPurchase total={total}/>
+
             </div>
         </div>
 
