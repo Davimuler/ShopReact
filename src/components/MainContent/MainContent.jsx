@@ -20,6 +20,7 @@ import axios from "../../api/api.js";
 
 
 
+
 const MainContent = (props) => {
 console.log(props.itemsToBuy)
 const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
@@ -39,16 +40,10 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
 
         <Routes>
 
-            <Route path="/" element={<FirstPage data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
+            <Route path="/" element={<FirstPage setSection={props.setSection} data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
             <Route path="/test" element={<Test/>}/>
             <Route path="/auth/items" element={<Items setItems={props.setItems} itemsData={props.itemsData}/>}/>
             <Route path="/users" element={<Users data={props.data} setUsers={props.setUsers}/>}/>
-            <Route path="/keramika" element={<Keramika/>}/>
-            <Route path="/smesitili" element={<Smesitili/>}/>*/}
-            <Route path="/moyki" element={<Moyki/>}/>
-            <Route path="/sifony" element={<Sifony/>}/>
-            <Route path="/dushGarnitura" element={<DushGarnitura/>}/>
-            <Route path="/santechnika" element={<Santechnika/>}/>
             <Route path="/login/*" element={<Login/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
         </Routes>

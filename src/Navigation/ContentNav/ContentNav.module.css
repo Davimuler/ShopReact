@@ -1,6 +1,9 @@
 .Nav{
     float: top;
 }
+.Nav a{
+   padding-left: 5px;
+}
 .NavLink{
     float: top;
 }

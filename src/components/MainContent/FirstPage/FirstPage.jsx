@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import S from "./FistPage.module.css"
-
-
 import ContentNav from "../../../Navigation/ContentNav/ContentNav";
 import Element from "../../../ShopElement/Element";
-import OneItem from "../auth/Items/OneItem/OneItem";
+
 
 
 const FirstPage = (props) => {
@@ -17,7 +15,7 @@ const FirstPage = (props) => {
 console.log(data)
     return <div className={S.FirstPage}>
         <div className={S.navbar}>
-            <ContentNav></ContentNav>
+            <ContentNav setSection={props.setSection}/>
         </div>
         <div className={S.content}>
             { data.length === 0 ? <></> : data.map(

@@ -1,31 +1,30 @@
 import React from "react";
 import S from "./ContentNav.module.css"
 import {NavLink} from "react-router-dom";
+import {Button} from "@mui/material";
 
 const ContentNav = (props) => {
     return <div className={S.Nav}>
-       <div>Розділи</div>
+       <div> Sections</div>
         <div>
             <div>
-                <NavLink to={'/keramika'}>Керамика</NavLink>
+                <Button onClick={()=>{props.setSection("Santechnics")}}>All sections</Button>
             </div>
             <div>
-                <NavLink to={'/smesitili'}>Смесители</NavLink>
+                <Button onClick={()=>{props.setSection("Ceramics")}}>Ceramics</Button>
             </div>
             <div>
-                <NavLink to={'/moyki'}>Кухонные мойки</NavLink>
+                <Button onClick={()=>{props.setSection("Smesitili")}}>Smesitili</Button>
             </div>
             <div>
-                <NavLink to={'/sifony'}>Сифоны</NavLink>
+                <Button onClick={()=>{props.setSection("Moyki")}}>Moyki</Button>
             </div>
             <div>
-                <NavLink to={'/dushGarnitura'}>Душевая гарнитура</NavLink>
+                <Button onClick={()=>{props.setSection("Sifons")}}>Sifons</Button>
             </div>
             <div>
-                <NavLink to={'/santechnika'}>Сантехника</NavLink>
+                <Button onClick={()=>{props.setSection("Bathroom garniture")}}>Bathroom garniture</Button>
             </div>
-
-
         </div>
     </div>
 }
