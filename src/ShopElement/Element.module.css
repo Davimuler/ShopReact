@@ -6,3 +6,10 @@
     width: 100px;
     height: 100px;
 }
+.ImageCompare{
+    width: 40px;
+    height: 40px;
+}
+.ImageCompare:hover{
+    cursor: pointer;
+}

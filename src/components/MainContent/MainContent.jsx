@@ -15,6 +15,10 @@ import Users from "./auth/Users/Users";
 import Test from "./test/test";
 import Items from "./auth/Items/Items";
 import axios from "../../api/api.js";
+import CompareWindow from "../../pages/Compare/CompareWindow";
+import {UpdateCompareWindowVision} from "../../redux/HeaderReducer";
+import {addItemToView, deleteItemToCompare} from "../../redux/UserReducer";
+import ViewProduct from "./viewProduct/ViewProduct";
 
 
 
@@ -22,9 +26,7 @@ import axios from "../../api/api.js";
 
 
 const MainContent = (props) => {
-console.log(props.itemsToBuy)
 const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
-
 
     useEffect(() => {
         setItemsToBuy(props.itemsToBuy)
@@ -34,18 +36,17 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
             props.setItems(res.data)
         })
     }, []);
-
     return <div>
         {props.isBasketActive&&<Basket deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
-
+        {props.isCompareWindowActive&&<CompareWindow  addItemToView={props.addItemToView} deleteItemToCompare={props.deleteItemToCompare} itemsToCompare={props.itemsToCompare} UpdateCompareWindowVision={props.UpdateCompareWindowVision}/>}
         <Routes>
-
-            <Route path="/" element={<FirstPage setSection={props.setSection} data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
+            <Route path="/" element={<FirstPage addItemToCompare={props.addItemToCompare} setSection={props.setSection} data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
             <Route path="/test" element={<Test/>}/>
             <Route path="/auth/items" element={<Items setItems={props.setItems} itemsData={props.itemsData}/>}/>
             <Route path="/users" element={<Users data={props.data} setUsers={props.setUsers}/>}/>
             <Route path="/login/*" element={<Login/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
+            <Route path="/view-product" element={<ViewProduct  itemToView={props.itemToView}/>}/>
         </Routes>
     </div>
 }

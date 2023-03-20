@@ -12,14 +12,13 @@ const FirstPage = (props) => {
     useEffect(() => {
         setData(props.data)
     }, [props.data])
-console.log(data)
     return <div className={S.FirstPage}>
         <div className={S.navbar}>
             <ContentNav setSection={props.setSection}/>
         </div>
         <div className={S.content}>
             { data.length === 0 ? <></> : data.map(
-                i=> <Element data={i} key={i._id} notificationCount={props.notificationCount}
+                i=> <Element addItemToCompare={props.addItemToCompare} data={i} key={i._id} notificationCount={props.notificationCount}
                              incrementNotificationCount={props.incrementNotificationCount}/>)}
         </div>
 

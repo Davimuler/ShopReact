@@ -1,6 +1,8 @@
 import React from "react";
 import S from './Header.module.css'
 import {NavLink} from "react-router-dom";
+import SearchBar from "./SearchBar/SearchBar";
+import {setSearchBar} from "../../redux/ItemsReducer";
 
 
 const Header = (props) => {
@@ -8,6 +10,12 @@ const Header = (props) => {
         props.UpdateBasketVision(!props.isBasketActive? true:false)
         if(!props.isBasketActive)props.incrementNotificationCount(0)
     }
+    const updateCompareWindowVision=()=>{
+        props.UpdateCompareWindowVision(!props.isCompareWindowActive? true:false)
+
+    }
+
+console.log(props.UserData)
     return <header className={S.MainHeader}>
         <NavLink to={'/'}>
             <img className={S.MainImg}
@@ -16,13 +24,22 @@ const Header = (props) => {
         </NavLink>
 
         <div className={S.HeaderElement}>Catalog</div>
-        <input className={S.Input}/>
+
+        <SearchBar setSearchBar={props.setSearchBar}/>
+
+
 
         <div onClick={updateBasketVision}>
             <img className={S.basketImage}
                  src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
         </div>
         {!props.notificationCount? <></>: <span className={S.notificationCount}>{props.notificationCount}</span>}
+
+        <div onClick={updateCompareWindowVision}>
+            <img className={S.basketImage} src={'https://i.etsystatic.com/22467704/r/il/ad03cc/2675884361/il_fullxfull.2675884361_jvnz.jpg'}/>
+        </div>
+
+<img className={S.userImage} src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}/>
         <NavLink  className={S.RegLog} to={'/registration'}>Sign up</NavLink>
         <NavLink  className={S.RegLog} to={'/login'}>Log in</NavLink>
     </header>

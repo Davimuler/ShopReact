@@ -4,11 +4,10 @@ import {Button} from '@mui/material';
 import {useDispatch} from 'react-redux';
 import {incrementNotificationCount} from "../redux/HeaderReducer";
 import ShowImage from "../components/MainContent/auth/Items/CreateItem/ShowImage/ShowImage";
-import {addItemToBuy} from "../redux/UserReducer";
+import {addItemToBuy, addItemToCompare} from "../redux/UserReducer";
 
 
 const Element = (props) => {
-// console.log(props.data)
     const [isHover, setIsHover] = useState(false)
     const [count, setCount] = useState(0);
     const dispatch = useDispatch();
@@ -24,6 +23,10 @@ const Element = (props) => {
         setCount(count + 1)
         dispatch(addItemToBuy(props.data))
     };
+   const handleAddToCompare=()=>{
+       console.log(props.data)
+       dispatch(addItemToCompare(props.data))
+    }
 
     return <div className={S.element} onMouseLeave={() => setIsHover(false)} onMouseEnter={() => {
         setIsHover(true)
@@ -36,6 +39,9 @@ const Element = (props) => {
         <div>
             <Button onClick={handleButtonClick} style={{position: 'relative', zIndex: 1}} variant="outlined"
                     color="primary">Buy</Button>
+        </div>
+        <div>
+            <img  onClick={handleAddToCompare} className={S.ImageCompare} src={'https://png.pngtree.com/png-vector/20191027/ourmid/pngtree-simply-weight-icon-compare-logo-symbol-scales-judgment-pictogram-ui-comparison-png-image_1875848.jpg'}/>
         </div>
         {isHover && <div>
             <div>Description:{props.data.description}</div>

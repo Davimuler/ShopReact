@@ -1,0 +1,44 @@
+.modal{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.modal__content{
+    margin: 90px auto auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    height: 575px;
+    width: 1000px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.closeCross{
+    width: 25px;
+    height: 20px;
+    float:right;
+    cursor: pointer;
+}
+
+.Content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.leftSide{
+    grid-column: 1 / 2;
+}
+.rightSide{
+    grid-column: 2 / 3;
+}
+.Element{
+    margin-bottom: 50px;
+}

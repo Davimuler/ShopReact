@@ -73,6 +73,7 @@ const Login = (props) => {
             console.log(res)
             if (res.status == 200) {
                setMessage('Loged in')
+
             }
         })
     }
