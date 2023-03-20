@@ -17,7 +17,7 @@ import Items from "./auth/Items/Items";
 import axios from "../../api/api.js";
 import CompareWindow from "../../pages/Compare/CompareWindow";
 import {UpdateCompareWindowVision} from "../../redux/HeaderReducer";
-import {addItemToView, deleteItemToCompare} from "../../redux/UserReducer";
+import {addItemToView, deleteItemToCompare, logUser} from "../../redux/UserReducer";
 import ViewProduct from "./viewProduct/ViewProduct";
 
 
@@ -44,7 +44,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
             <Route path="/test" element={<Test/>}/>
             <Route path="/auth/items" element={<Items setItems={props.setItems} itemsData={props.itemsData}/>}/>
             <Route path="/users" element={<Users data={props.data} setUsers={props.setUsers}/>}/>
-            <Route path="/login/*" element={<Login/>}/>
+            <Route path="/login/*" element={<Login logUser={props.logUser}/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
             <Route path="/view-product" element={<ViewProduct  itemToView={props.itemToView}/>}/>
         </Routes>

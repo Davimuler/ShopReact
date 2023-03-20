@@ -3,10 +3,12 @@ import S from './Login.module.css'
 import {useState} from "react";
 import {useEffect} from "react";
 import axios from '../../api/api.js'
+import {logUser} from "../../redux/UserReducer";
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = (props) => {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
     const [emailError, setEmailError] = useState('Email can not be empty');
@@ -72,9 +74,11 @@ const Login = (props) => {
         }).then(res => {
             console.log(res)
             if (res.status == 200) {
-               setMessage('Loged in')
-
+                setMessage('Logged in')
+                props.logUser(res.data)
+                navigate('/');
             }
+
         })
     }
 
@@ -94,10 +98,10 @@ const Login = (props) => {
             </div>
         </form>
         <div>
-            <button onClick={Login} disabled={!formValid}>Log in</button>
+            <button onClick={Login} disabled={!formValid}>Logg in</button>
         </div>
 
-        <div  style={{color: 'green'}}>{message}</div>
+        <div style={{color: 'green'}}>{message}</div>
 
     </div>
 }

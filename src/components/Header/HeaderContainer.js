@@ -2,6 +2,7 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import {incrementNotificationCount, UpdateBasketVision, UpdateCompareWindowVision} from "../../redux/HeaderReducer";
 import {setSearchBar} from "../../redux/ItemsReducer";
+import {logUser} from "../../redux/UserReducer";
 
 const mapStateToProps=(state)=>{
     return{
@@ -14,4 +15,4 @@ const mapStateToProps=(state)=>{
 }
 
 
-export const HeaderContainer=connect(mapStateToProps,{setSearchBar,UpdateCompareWindowVision,incrementNotificationCount,UpdateBasketVision})(Header)
+export const HeaderContainer=connect(mapStateToProps,{logUser,setSearchBar,UpdateCompareWindowVision,incrementNotificationCount,UpdateBasketVision})(Header)

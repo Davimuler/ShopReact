@@ -6,7 +6,7 @@ import {
     addItemToCompare,
     addItemToView,
     deleteItemToBuy,
-    deleteItemToCompare,
+    deleteItemToCompare, logUser,
     setUsers
 } from "../../redux/UserReducer";
 import {setItems, setSection} from "../../redux/ItemsReducer";
@@ -29,6 +29,7 @@ const mapStateToProps = (state) => {
 
 
 export const MainContentContainer = connect(mapStateToProps, {
+    logUser,
     setSection,
     deleteItemToCompare,
     UpdateCompareWindowVision,

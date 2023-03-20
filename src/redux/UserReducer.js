@@ -39,7 +39,6 @@ const UserReducer = (state = InitialState, action) => {
             return {...state, itemsToCompare: updatedItems}
         }
         case LOG_USER: {
-
             return {...state, UserData: action.data}
         }
         case ADD_ITEM_TO_VIEW: {
