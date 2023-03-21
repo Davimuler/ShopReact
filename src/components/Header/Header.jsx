@@ -16,7 +16,6 @@ const Header = (props) => {
 
     }
 
-console.log(props.UserData)
     return <header className={S.MainHeader}>
         <NavLink to={'/'}>
             <img className={S.MainImg}
@@ -40,7 +39,10 @@ console.log(props.UserData)
             <img className={S.basketImage} src={'https://i.etsystatic.com/22467704/r/il/ad03cc/2675884361/il_fullxfull.2675884361_jvnz.jpg'}/>
         </div>
         {props.UserData? <>
-            <img className={S.userImage} src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}/>
+            <NavLink to='/cabinet'>
+                <img className={S.userImage} src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}/>
+            </NavLink>
+
             <button onClick={()=>{props.logUser(null)}} className={S.exitUser}>Exit</button>
         </>:<>
             <NavLink  className={S.RegLog} to={'/registration'}>Sign up</NavLink>

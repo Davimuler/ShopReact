@@ -4,7 +4,7 @@ import {incrementNotificationCount, UpdateBasketVision, UpdateCompareWindowVisio
 import {
     addItemToBuy,
     addItemToCompare,
-    addItemToView,
+    addItemToView, addItemToWishList,
     deleteItemToBuy,
     deleteItemToCompare, logUser,
     setUsers
@@ -23,7 +23,9 @@ const mapStateToProps = (state) => {
         itemsToBuy: state.Users.itemsToBuy,
         isCompareWindowActive: state.Header.isCompareWindowActive,
         itemsToCompare: state.Users.itemsToCompare,
-        itemToView: state.Users.itemToView
+        itemToView: state.Users.itemToView,
+        wishList:state.Users.wishList,
+        isAuth:state.Users.isAuth
     }
 }
 
@@ -40,5 +42,6 @@ export const MainContentContainer = connect(mapStateToProps, {
     incrementNotificationCount,
     setItems,
     UpdateBasketVision,
-    addItemToView
+    addItemToView,
+    addItemToWishList
 })(MainContent)

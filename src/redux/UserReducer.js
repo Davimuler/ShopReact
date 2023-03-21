@@ -5,14 +5,16 @@ const DELETE_ITEM_TO_BUY = "DELETE-ITEM-TO-BUY";
 const DELETE_ITEM_TO_COMPARE = "DELETE-ITEM-TO-COMPARE";
 const LOG_USER="LOG-USER";
 const ADD_ITEM_TO_VIEW="ADD-ITEM-TO-VIEW"
+const ADD_ITEM_TO_WISH_LIST="ADD-ITEM-TO-WISH-LIST"
 
 let InitialState = {
     UserData:null,
+    isAuth:false,
     data: [],
     itemsToBuy: [],
     itemsToCompare:[],
-    itemToView:null
-
+    itemToView:null,
+    wishList:[]
 }
 
 const UserReducer = (state = InitialState, action) => {
@@ -39,10 +41,15 @@ const UserReducer = (state = InitialState, action) => {
             return {...state, itemsToCompare: updatedItems}
         }
         case LOG_USER: {
-            return {...state, UserData: action.data}
+            return {...state, UserData: action.data,isAuth:true}
         }
         case ADD_ITEM_TO_VIEW: {
             return {...state, itemToView: action.data}
+        }
+        case ADD_ITEM_TO_WISH_LIST:{
+            const newItem = action.data;
+            const updatedWishList = [...state.wishList, newItem];
+            return {...state, wishList: updatedWishList};
         }
         default:
             return state;
@@ -56,5 +63,5 @@ export const deleteItemToCompare = (id) => ({type: DELETE_ITEM_TO_COMPARE, id});
 export const addItemToCompare=(data)=>({type:ADD_ITEM_TO_COMPARE,data});
 export const logUser=(data)=>({type:LOG_USER,data});
 export const addItemToView=(data)=>({type:ADD_ITEM_TO_VIEW,data});
-
+export const addItemToWishList=(data)=>({type:ADD_ITEM_TO_WISH_LIST,data})
 export default UserReducer;
