@@ -21,7 +21,6 @@ import Cabinet from "../../LoginRegistration/Cabinet/Cabinet";
 
 
 const MainContent = (props) => {
-
 const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
     useEffect(() => {
         setItemsToBuy(props.itemsToBuy)
@@ -42,7 +41,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
             <Route path="/login/*" element={<Login logUser={props.logUser}/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
             <Route path="/view-product" element={<ViewProduct  itemToView={props.itemToView}/>}/>
-            <Route path="/cabinet" element={<Cabinet isAuth={props.isAuth} wishList={props.wishList}/>}/>
+            <Route path="/cabinet" element={<Cabinet UserData={props.UserData} isAuth={props.isAuth} wishList={props.wishList}/>}/>
         </Routes>
     </div>
 }

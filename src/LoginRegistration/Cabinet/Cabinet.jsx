@@ -7,21 +7,28 @@ import {Button} from "@mui/material";
 import ExpandableComponent from "./expandableComponent/ExpandableComponent";
 
 const Cabinet = (props) => {
+
     return (
+
         <div>
-            <ExpandableComponent title={"Orders"}>
-                <Orders/>
-            </ExpandableComponent>
+            {!props.UserData?<>
+            You should authorize first to enter you account cabinet
+            </>:<>
+                <ExpandableComponent title={"Orders"}>
+                    <Orders orders={props.UserData.orders}/>
+                </ExpandableComponent>
 
-            <ExpandableComponent title={"AuthUserData"}>
-                <AuthUserData/>
-            </ExpandableComponent>
+                <ExpandableComponent title={"AuthUserData"}>
+                    <AuthUserData/>
+                </ExpandableComponent>
 
-            <ExpandableComponent title={"WishList"}>
-                <WishList isAuth={props.isAuth} wishList={props.wishList}/>
-            </ExpandableComponent>
+                <ExpandableComponent title={"WishList"}>
+                    <WishList isAuth={props.isAuth} wishList={props.wishList}/>
+                </ExpandableComponent>
 
-            <Button>Exit</Button>
+                <Button>Exit</Button>
+            </>}
+
 
         </div>
     );

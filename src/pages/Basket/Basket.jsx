@@ -22,7 +22,8 @@ const Basket = (props) => {
                 newOrder:{
                     id:i._id,
                     fullName:i.fullName,
-                    price:i.price
+                    price:i.price,
+                    DateOfPurchase:new Date()
                 }
             }).then((res) => {
                 console.log(res)
