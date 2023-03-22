@@ -14,6 +14,10 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    orders:{
+        type:Array,
+        default:[],
+    },
     avatarUrl:String
 
 },{

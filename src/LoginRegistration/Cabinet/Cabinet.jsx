@@ -9,12 +9,12 @@ import ExpandableComponent from "./expandableComponent/ExpandableComponent";
 const Cabinet = (props) => {
     return (
         <div>
-            <ExpandableComponent title={"AuthUserData"}>
-                <AuthUserData/>
-            </ExpandableComponent>
-
             <ExpandableComponent title={"Orders"}>
                 <Orders/>
+            </ExpandableComponent>
+
+            <ExpandableComponent title={"AuthUserData"}>
+                <AuthUserData/>
             </ExpandableComponent>
 
             <ExpandableComponent title={"WishList"}>

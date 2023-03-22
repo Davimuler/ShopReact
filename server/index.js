@@ -246,7 +246,17 @@ app.get('/users',async(req, res)=>{
         });
     }
 })
-
+app.put('/users', async (req, res) => {
+    try {
+        const updatedUser = await UserModel.findByIdAndUpdate(req.body.id, req.body, { new: true });
+        res.json(updatedUser);
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error updating user',
+            error: err.message,
+        });
+    }
+});
 app.post('/auth/login',loginValidation,UserController.login);
 
 app.post('/auth/register',registerValidation,UserController.register)
