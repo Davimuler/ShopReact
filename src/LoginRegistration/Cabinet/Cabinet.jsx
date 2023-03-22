@@ -18,8 +18,8 @@ const Cabinet = (props) => {
                     <Orders orders={props.UserData.orders}/>
                 </ExpandableComponent>
 
-                <ExpandableComponent title={"AuthUserData"}>
-                    <AuthUserData/>
+                <ExpandableComponent title={"User Data"}>
+                    <AuthUserData User={props.UserData}/>
                 </ExpandableComponent>
 
                 <ExpandableComponent title={"WishList"}>
