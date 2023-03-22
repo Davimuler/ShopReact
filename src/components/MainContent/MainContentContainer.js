@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
         itemsToCompare: state.Users.itemsToCompare,
         itemToView: state.Users.itemToView,
         wishList:state.Users.wishList,
-        isAuth:state.Users.isAuth
+        isAuth:state.Users.isAuth,
+        UserData:state.Users.UserData
     }
 }
 

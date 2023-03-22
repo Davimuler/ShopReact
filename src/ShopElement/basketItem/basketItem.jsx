@@ -43,7 +43,6 @@ const BasketItem = (props) => {
     const deleteHandle=()=>{
 
     }
-    console.log(props.data)
     return (
         <div className={S.item}>
             <ShowImage image={props.data.image}/>

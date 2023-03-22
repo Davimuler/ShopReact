@@ -57,6 +57,10 @@ const upload = multer({ storage: storage });
 app.use(express.json())
 
 app.use(cors());
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 app.use('/uploads',express.static('uploads'))
 
@@ -249,6 +253,18 @@ app.get('/users',async(req, res)=>{
 app.put('/users', async (req, res) => {
     try {
         const updatedUser = await UserModel.findByIdAndUpdate(req.body.id, req.body, { new: true });
+        res.json(updatedUser);
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error updating user',
+            error: err.message,
+        });
+    }
+});
+
+app.put('/order', async (req, res) => {
+    try {
+        const updatedUser = await UserModel.findByIdAndUpdate(req.body.id,{ $push: { orders: req.body.newOrder } }, { new: true });
         res.json(updatedUser);
     } catch (err) {
         res.status(500).json({

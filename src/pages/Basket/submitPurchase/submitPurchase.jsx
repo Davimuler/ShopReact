@@ -6,7 +6,7 @@ const SubmitPurchase = (props) => {
     return (
         <div className={S.submit}>
             <>Total: {props.total}</>
-            <Button>Submit purchase</Button>
+            <Button onClick={props.pushOrder} >Submit purchase</Button>
         </div>
     );
 };

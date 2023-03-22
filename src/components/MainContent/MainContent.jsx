@@ -32,7 +32,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
         })
     }, []);
     return <div>
-        {props.isBasketActive&&<Basket deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
+        {props.isBasketActive&&<Basket UserData={props.UserData} deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
         {props.isCompareWindowActive&&<CompareWindow  addItemToView={props.addItemToView} deleteItemToCompare={props.deleteItemToCompare} itemsToCompare={props.itemsToCompare} UpdateCompareWindowVision={props.UpdateCompareWindowVision}/>}
         <Routes>
             <Route path="/*" element={<FirstPage isAuth={props.isAuth} wishList={props.wishList} addItemToWishList={props.addItemToWishList} addItemToCompare={props.addItemToCompare} setSection={props.setSection} data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
