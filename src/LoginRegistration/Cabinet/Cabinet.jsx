@@ -1,17 +1,28 @@
 import React from 'react';
 import ViewItem from "../../components/MainContent/viewItem/viewItem";
+import Orders from "./Orders/Orders";
+import WishList from "./WishList/WishList";
+import AuthUserData from "./AuthUserData/AuthUserData";
+import {Button} from "@mui/material";
+import ExpandableComponent from "./expandableComponent/ExpandableComponent";
 
 const Cabinet = (props) => {
     return (
         <div>
-            {!props.isAuth? <>First you should authorize to see your wish list</>:<>
-                {!props.wishList.length>0? <>Wish list is empty<div >you can add item to wish list in catalog</div> </>:<>
-                    <div>
-                        Your wish list
-                    </div>
-                    {props.wishList.map(i=><ViewItem data={i}/>)}
-                </>}
-            </>}
+            <ExpandableComponent title={"AuthUserData"}>
+                <AuthUserData/>
+            </ExpandableComponent>
+
+            <ExpandableComponent title={"Orders"}>
+                <Orders/>
+            </ExpandableComponent>
+
+            <ExpandableComponent title={"WishList"}>
+                <WishList isAuth={props.isAuth} wishList={props.wishList}/>
+            </ExpandableComponent>
+
+            <Button>Exit</Button>
+
         </div>
     );
 };
