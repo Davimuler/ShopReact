@@ -9,6 +9,7 @@ import {validationResult} from 'express-validator'
 import {registerValidation, loginValidation, postCreateValidation} from './Validations/validations.js'
 
 import TestModel from './models/Test.js'
+
 import UserModel from "./models/User.js"
 import checkAuth from './utils/checkAuth.js'
 
@@ -21,6 +22,7 @@ import NewItemModel from "./models/NewItem.js";
 
 import SectionModel from "./models/Sections.js"
 import NewItem from "./models/NewItem.js";
+import CouponModel from "./models/Coupon.js";
 
 
 mongoose.set("strictQuery", false);
@@ -163,6 +165,54 @@ app.post('/test',async (req,res)=>{
         }
     }
 )
+
+app.post('/coupon',async (req,res)=>{
+        try{
+            const doc=new CouponModel({
+                Code:req.body.Code,
+                Discount:req.body.Discount
+            })
+            const coupon=await doc.save();
+
+            res.json(coupon)
+        }catch(err){
+            res.status(500).json({
+                message:'Error to create coupon'
+            })
+        }
+    }
+)
+app.get('/coupons', async (req,res)=>{
+    try {
+        const coupons = await CouponModel.find({});
+        if (!coupons) {
+            return res.status(404).json({
+                message: 'No items',
+            });
+        }
+        res.json(coupons);
+    }catch (err){
+        res.status(500).json({
+            message: 'No access',
+        });
+    }
+})
+app.get('/coupon', async (req,res)=>{
+    try {
+        const coupon = await CouponModel.find({ Code: req.body.Code });
+        if (!coupon) {
+            return res.status(404).json({
+                message: 'No such coupon',
+            });
+        }
+        res.json(coupon);
+    }catch (err){
+        res.status(500).json({
+            message: 'No access',
+        });
+    }
+})
+
 // app.get('/post',PostController.getAll)
 // app.get('/post/:id',PostController.getOne)
 app.post('/post',postCreateValidation,PostController.create)
@@ -273,6 +323,9 @@ app.put('/order', async (req, res) => {
         });
     }
 });
+
+
+
 app.post('/auth/login',loginValidation,UserController.login);
 
 app.post('/auth/register',registerValidation,UserController.register)

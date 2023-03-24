@@ -6,6 +6,7 @@ import AuthUserData from "./AuthUserData/AuthUserData";
 import {Button} from "@mui/material";
 import ExpandableComponent from "./expandableComponent/ExpandableComponent";
 import {addItemToView} from "../../redux/UserReducer";
+import CouponCodeBar from "./CouponCode/CouponCodeBar";
 
 const Cabinet = (props) => {
 
@@ -19,6 +20,8 @@ const Cabinet = (props) => {
                     <Orders orders={props.UserData.orders}/>
                 </ExpandableComponent>
 
+
+
                 <ExpandableComponent title={"User Data"}>
                     <AuthUserData User={props.UserData}/>
                 </ExpandableComponent>
@@ -26,7 +29,7 @@ const Cabinet = (props) => {
                 <ExpandableComponent title={"WishList"}>
                     <WishList addItemToView={props.addItemToView} isAuth={props.isAuth} wishList={props.wishList}/>
                 </ExpandableComponent>
-
+                <CouponCodeBar/>
                 <Button>Exit</Button>
             </>}
 

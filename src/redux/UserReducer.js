@@ -14,7 +14,8 @@ let InitialState = {
     itemsToBuy: [],
     itemsToCompare: [],
     itemToView: null,
-    wishList: []
+    wishList: [],
+    couponCode:1
 }
 
 const UserReducer = (state = InitialState, action) => {
