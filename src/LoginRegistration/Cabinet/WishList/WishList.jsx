@@ -1,5 +1,7 @@
 import React from 'react';
 import ViewItem from "../../../components/MainContent/viewItem/viewItem";
+import {Button} from "@mui/material";
+import {Link} from "react-router-dom";
 
 const WishList = (props) => {
     return (
@@ -9,7 +11,9 @@ const WishList = (props) => {
                     <div>
                         Your wish list
                     </div>
-                    {props.wishList.map(i=><ViewItem data={i}/>)}
+                    {props.wishList.map(i=><div><ViewItem addItemToView={props.addItemToView} data={i}/>
+                        <Link to='/view-product'>  <Button onClick={()=>{props.addItemToView(i)}}>View product</Button></Link>
+                    </div>)}
                 </>}
             </>}
         </div>

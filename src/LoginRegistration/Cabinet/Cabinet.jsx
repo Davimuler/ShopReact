@@ -5,6 +5,7 @@ import WishList from "./WishList/WishList";
 import AuthUserData from "./AuthUserData/AuthUserData";
 import {Button} from "@mui/material";
 import ExpandableComponent from "./expandableComponent/ExpandableComponent";
+import {addItemToView} from "../../redux/UserReducer";
 
 const Cabinet = (props) => {
 
@@ -23,7 +24,7 @@ const Cabinet = (props) => {
                 </ExpandableComponent>
 
                 <ExpandableComponent title={"WishList"}>
-                    <WishList isAuth={props.isAuth} wishList={props.wishList}/>
+                    <WishList addItemToView={props.addItemToView} isAuth={props.isAuth} wishList={props.wishList}/>
                 </ExpandableComponent>
 
                 <Button>Exit</Button>

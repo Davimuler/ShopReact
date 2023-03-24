@@ -41,7 +41,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
             <Route path="/login/*" element={<Login logUser={props.logUser}/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
             <Route path="/view-product" element={<ViewProduct  itemToView={props.itemToView}/>}/>
-            <Route path="/cabinet" element={<Cabinet UserData={props.UserData} isAuth={props.isAuth} wishList={props.wishList}/>}/>
+            <Route path="/cabinet" element={<Cabinet addItemToView={props.addItemToView} UserData={props.UserData} isAuth={props.isAuth} wishList={props.wishList}/>}/>
         </Routes>
     </div>
 }
