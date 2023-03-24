@@ -8,6 +8,11 @@ import axios from "../../api/api.js";
 
 const Basket = (props) => {
     const [data, setData] = useState(props.itemsToBuy);
+    const[coupon,setCoupon]=useState(1);
+    useEffect(()=>{
+        setCoupon(props.couponCode)
+    },[props.couponCode])
+
     useEffect(() => {
         setData(props.itemsToBuy);
     }, [props.itemsToBuy]);
@@ -44,7 +49,7 @@ const Basket = (props) => {
                 }} className={S.closeCross} src="https://emojis.wiki/thumbs/emojis/cross-mark.webp"/>
 
                 {data.map((i) => <BasketItem deleteItemToPurchase={deleteItemToPurchase} data={i}/>)}
-                <SubmitPurchase pushOrder={pushOrder} total={total}/>
+                <SubmitPurchase pushOrder={pushOrder} coupon={coupon} total={total}/>
 
             </div>
         </div>

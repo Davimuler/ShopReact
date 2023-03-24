@@ -197,7 +197,7 @@ app.get('/coupons', async (req,res)=>{
         });
     }
 })
-app.get('/coupon', async (req,res)=>{
+app.post('/couponGet', async (req,res)=>{
     try {
         const coupon = await CouponModel.find({ Code: req.body.Code });
         if (!coupon) {

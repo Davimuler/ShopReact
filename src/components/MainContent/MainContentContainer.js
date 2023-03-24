@@ -26,7 +26,8 @@ const mapStateToProps = (state) => {
         itemToView: state.Users.itemToView,
         wishList:state.Users.wishList,
         isAuth:state.Users.isAuth,
-        UserData:state.Users.UserData
+        UserData:state.Users.UserData,
+        couponCode:state.Users.couponCode
     }
 }
 
@@ -45,4 +46,5 @@ export const MainContentContainer = connect(mapStateToProps, {
     UpdateBasketVision,
     addItemToView,
     addItemToWishList
+
 })(MainContent)

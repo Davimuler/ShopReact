@@ -17,3 +17,9 @@
     color: #333;
     outline: none;
 }
+.Activated{
+    color: green;
+}
+.NotActivated{
+    color: red;
+}

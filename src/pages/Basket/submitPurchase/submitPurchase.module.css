@@ -1,8 +1,11 @@
 .submit{
     float:right;
     border: 2px solid green;
-    height: 40px;
+    height:auto;
     width: 300px;
     padding: 10px;
     background-color: rgba(0, 128, 0, 0.1);
+}
+.Discount{
+    color: red;
 }

@@ -6,6 +6,7 @@ const DELETE_ITEM_TO_COMPARE = "DELETE-ITEM-TO-COMPARE";
 const LOG_USER = "LOG-USER";
 const ADD_ITEM_TO_VIEW = "ADD-ITEM-TO-VIEW"
 const ADD_ITEM_TO_WISH_LIST = "ADD-ITEM-TO-WISH-LIST"
+const SET_COUPON="SET-COUPON"
 
 let InitialState = {
     UserData: null,
@@ -56,6 +57,9 @@ const UserReducer = (state = InitialState, action) => {
             const updatedWishList = [...state.wishList, newItem];
             return {...state, wishList: updatedWishList};
         }
+        case SET_COUPON: {
+            return {...state,couponCode:action.coupon}
+        }
         default:
             return state;
     }
@@ -69,4 +73,5 @@ export const addItemToCompare = (data) => ({type: ADD_ITEM_TO_COMPARE, data});
 export const logUser = (data) => ({type: LOG_USER, data});
 export const addItemToView = (data) => ({type: ADD_ITEM_TO_VIEW, data});
 export const addItemToWishList = (data) => ({type: ADD_ITEM_TO_WISH_LIST, data})
+export const setCoupon = (coupon) => ({type: SET_COUPON, coupon})
 export default UserReducer;

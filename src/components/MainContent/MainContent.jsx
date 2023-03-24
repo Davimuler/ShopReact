@@ -31,7 +31,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
         })
     }, []);
     return <div>
-        {props.isBasketActive&&<Basket UserData={props.UserData} deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
+        {props.isBasketActive&&<Basket couponCode={props.couponCode} UserData={props.UserData} deleteItemToBuy={props.deleteItemToBuy} itemsToBuy={itemsToBuy} setActive={props.UpdateBasketVision} isBasketActive={props.isBasketActive}/>}
         {props.isCompareWindowActive&&<CompareWindow  addItemToView={props.addItemToView} deleteItemToCompare={props.deleteItemToCompare} itemsToCompare={props.itemsToCompare} UpdateCompareWindowVision={props.UpdateCompareWindowVision}/>}
         <Routes>
             <Route path="/*" element={<FirstPage isAuth={props.isAuth} wishList={props.wishList} addItemToWishList={props.addItemToWishList} addItemToCompare={props.addItemToCompare} setSection={props.setSection} data={props.itemsData} notificationCount={props.notificationCount}  incrementNotificationCount={props.incrementNotificationCount} />}/>
@@ -41,7 +41,7 @@ const [itemsToBuy,setItemsToBuy]=useState(props.itemsToBuy)
             <Route path="/login/*" element={<Login logUser={props.logUser}/>}/>
             <Route path="/registration/*" element={<Reg/>}/>
             <Route path="/view-product" element={<ViewProduct  itemToView={props.itemToView}/>}/>
-            <Route path="/cabinet" element={<Cabinet addItemToView={props.addItemToView} UserData={props.UserData} isAuth={props.isAuth} wishList={props.wishList}/>}/>
+            <Route path="/cabinet" element={<Cabinet couponCode={props.couponCode}  addItemToView={props.addItemToView} UserData={props.UserData} isAuth={props.isAuth} wishList={props.wishList}/>}/>
         </Routes>
     </div>
 }

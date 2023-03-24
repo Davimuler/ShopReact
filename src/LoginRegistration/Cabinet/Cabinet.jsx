@@ -29,7 +29,7 @@ const Cabinet = (props) => {
                 <ExpandableComponent title={"WishList"}>
                     <WishList addItemToView={props.addItemToView} isAuth={props.isAuth} wishList={props.wishList}/>
                 </ExpandableComponent>
-                <CouponCodeBar/>
+                <CouponCodeBar couponCode={props.couponCode}/>
                 <Button>Exit</Button>
             </>}
 
