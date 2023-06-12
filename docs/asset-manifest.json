@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/ShopReact/static/css/main.1c03310e.css",
+    "main.js": "/ShopReact/static/js/main.7cd44fd3.js",
+    "static/js/787.23170c61.chunk.js": "/ShopReact/static/js/787.23170c61.chunk.js",
+    "static/media/instagramIcon.webp": "/ShopReact/static/media/instagramIcon.5566323f7cbea06e409f.webp",
+    "static/media/wish.png": "/ShopReact/static/media/wish.83076e34197b58ae751b.png",
+    "static/media/User.png": "/ShopReact/static/media/User.a6143582309785dca610.png",
+    "static/media/cross.webp": "/ShopReact/static/media/cross.b7989043e598b60645ce.webp",
+    "index.html": "/ShopReact/index.html",
+    "main.1c03310e.css.map": "/ShopReact/static/css/main.1c03310e.css.map",
+    "main.7cd44fd3.js.map": "/ShopReact/static/js/main.7cd44fd3.js.map",
+    "787.23170c61.chunk.js.map": "/ShopReact/static/js/787.23170c61.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c03310e.css",
+    "static/js/main.7cd44fd3.js"
+  ]
+}
