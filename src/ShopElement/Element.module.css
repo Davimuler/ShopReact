@@ -1,15 +1,31 @@
 .element {
-    width: 150px;
+    width: 250px;
+   padding: 10px;
 }
 
 .Image {
     width: 100px;
     height: 100px;
+    border-radius: 10%;
 }
 .ImageCompare{
     width: 40px;
     height: 40px;
 }
+.ImageWish{
+    margin-top: 4px;
+    width: 27px;
+    height: 27px;
+}
+.ImageWish:hover{
+    cursor: pointer;
+}
+.ImageWish:active{
+    filter: brightness(0.5) hue-rotate(90deg);
+}
 .ImageCompare:hover{
     cursor: pointer;
+}
+.WishCompareBox{
+    display: flex;
 }

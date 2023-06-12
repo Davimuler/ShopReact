@@ -1,5 +1,7 @@
 .Nav{
     float: top;
+    padding-left: 15px;
+    padding-top: 20px;
 }
 .Nav a{
    padding-left: 5px;

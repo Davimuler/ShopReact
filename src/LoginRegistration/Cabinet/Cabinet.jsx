@@ -1,15 +1,17 @@
 import React from 'react';
-import ViewItem from "../../components/MainContent/viewItem/viewItem";
 import Orders from "./Orders/Orders";
 import WishList from "./WishList/WishList";
 import AuthUserData from "./AuthUserData/AuthUserData";
 import {Button} from "@mui/material";
 import ExpandableComponent from "./expandableComponent/ExpandableComponent";
-import {addItemToView} from "../../redux/UserReducer";
 import CouponCodeBar from "./CouponCode/CouponCodeBar";
+import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {logUser} from "../../redux/UserReducer";
+
 
 const Cabinet = (props) => {
-
+const dispatch=useDispatch()
     return (
 
         <div>
@@ -20,8 +22,6 @@ const Cabinet = (props) => {
                     <Orders orders={props.UserData.orders}/>
                 </ExpandableComponent>
 
-
-
                 <ExpandableComponent title={"User Data"}>
                     <AuthUserData User={props.UserData}/>
                 </ExpandableComponent>
@@ -30,7 +30,13 @@ const Cabinet = (props) => {
                     <WishList addItemToView={props.addItemToView} isAuth={props.isAuth} wishList={props.wishList}/>
                 </ExpandableComponent>
                 <CouponCodeBar couponCode={props.couponCode}/>
-                <Button>Exit</Button>
+                <NavLink to={'/auth/items'}>
+                    <Button>Admin panel</Button>
+                </NavLink>
+
+                <div>
+                    <Button onClick={()=>{dispatch(logUser(null))}}>Exit</Button>
+                </div>
             </>}
 
 

@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import axios from '../../api/api.js'
 import {logUser} from "../../redux/UserReducer";
 import { useNavigate } from 'react-router-dom';
+import {Button, Typography} from "@mui/material";
 
 
 const Login = (props) => {
@@ -72,7 +73,6 @@ const Login = (props) => {
             email: email,
             password: password,
         }).then(res => {
-            console.log(res)
             if (res.status == 200) {
                 setMessage('Logged in')
                 props.logUser(res.data)
@@ -84,7 +84,7 @@ const Login = (props) => {
 
     return <div className={S.LogForm}>
         <form>
-            <h1>LOGIN</h1>
+            <Typography variant="h3">LOGIN</Typography>
             <div>
                 {(emailError && emailDirty) && <div style={{color: 'red'}}>{emailError}</div>}
                 <input onBlur={blurHandler} onChange={emailHandler} value={email} name='email' placeholder='Email'
@@ -98,7 +98,7 @@ const Login = (props) => {
             </div>
         </form>
         <div>
-            <button onClick={Login} disabled={!formValid}>Logg in</button>
+            <Button onClick={Login} disabled={!formValid}>Logg in</Button>
         </div>
 
         <div style={{color: 'green'}}>{message}</div>

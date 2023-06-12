@@ -2,53 +2,52 @@ import React from "react";
 import S from './Header.module.css'
 import {NavLink} from "react-router-dom";
 import SearchBar from "./SearchBar/SearchBar";
-import {setSearchBar} from "../../redux/ItemsReducer";
-import {logUser} from "../../redux/UserReducer";
+import {AppBar, Button, IconButton, makeStyles, Toolbar, Typography} from "@mui/material";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import UserIcon from '../../Images/Header/User.png'
 
 
 const Header = (props) => {
-    const updateBasketVision=()=>{
-        props.UpdateBasketVision(!props.isBasketActive? true:false)
-        if(!props.isBasketActive)props.incrementNotificationCount(0)
+    const updateBasketVision = () => {
+        props.UpdateBasketVision(!props.isBasketActive ? true : false)
+        if (!props.isBasketActive) props.incrementNotificationCount(0)
     }
-    const updateCompareWindowVision=()=>{
-        props.UpdateCompareWindowVision(!props.isCompareWindowActive? true:false)
+    const updateCompareWindowVision = () => {
+        props.UpdateCompareWindowVision(!props.isCompareWindowActive ? true : false)
 
     }
-
-    return <header className={S.MainHeader}>
-        <NavLink to={'/'}>
-            <img className={S.MainImg}
-                 src="https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-a-design_460848-8717.jpg"/>
-            <div className={S.HeaderElement}>Name of site</div>
-        </NavLink>
-
-        <div className={S.HeaderElement}>Catalog</div>
-
-        <SearchBar setSearchBar={props.setSearchBar}/>
-
-
-
-        <div onClick={updateBasketVision}>
-            <img className={S.basketImage}
-                 src="https://w7.pngwing.com/pngs/766/198/png-transparent-shopping-cart-online-shopping-computer-icons-shopping-cart-face-service-trade.png"/>
-        </div>
-        {!props.notificationCount? <></>: <span className={S.notificationCount}>{props.notificationCount}</span>}
-
-        <div onClick={updateCompareWindowVision}>
-            <img className={S.basketImage} src={'https://i.etsystatic.com/22467704/r/il/ad03cc/2675884361/il_fullxfull.2675884361_jvnz.jpg'}/>
-        </div>
-        {props.UserData? <>
-            <NavLink to='/cabinet'>
-                <img className={S.userImage} src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}/>
+    return <AppBar position="static" style={{backgroundColor: 'black', height: 70}}>
+        <Toolbar>
+            <NavLink className={S.navLink} to={'/'}>
+                <Typography variant="h6" style={{flexGrow: 1}}>
+                    Webstore
+                </Typography>
             </NavLink>
 
-            <button onClick={()=>{props.logUser(null)}} className={S.exitUser}>Exit</button>
-        </>:<>
-            <NavLink  className={S.RegLog} to={'/registration'}>Sign up</NavLink>
-            <NavLink  className={S.RegLog} to={'/login'}>Log in</NavLink>
-        </>}
+            <SearchBar setSearchBar={props.setSearchBar}/>
 
-    </header>
+
+            <IconButton color="primary" aria-label="add to shopping cart">
+                <AddShoppingCartIcon className={S.ShoppingCart} onClick={updateBasketVision}/>
+            </IconButton>
+            <Button onClick={updateCompareWindowVision}>Compare</Button>
+            <div style={{marginLeft: 'auto'}} className={S.RegLogContainer}>
+                {props.UserData ? <>
+                    <NavLink to='/cabinet'>
+                        <img className={S.userImage} src={UserIcon}/>
+                    </NavLink>
+                    <Button onClick={() => {
+                        props.logUser(null)
+                    }} className={S.exitUser}>Exit</Button>
+                </> : <>
+                    <NavLink to={'/registration'}><Button>Sign up</Button></NavLink>
+                    <NavLink to={'/login'}><Button>Log in</Button></NavLink>
+                </>}
+            </div>
+
+        </Toolbar>
+
+    </AppBar>
+
 }
 export default Header;

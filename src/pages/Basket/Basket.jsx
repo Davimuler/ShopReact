@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import S from "./Basket.module.css"
 import BasketItem from "../../ShopElement/basketItem/basketItem";
-import {Button} from "@mui/material";
 import SubmitPurchase from "./submitPurchase/submitPurchase";
 import axios from "../../api/api.js";
+import cross from '../../Images/Content/cross.webp'
 
 
 const Basket = (props) => {
@@ -31,7 +31,6 @@ const Basket = (props) => {
                     DateOfPurchase:new Date()
                 }
             }).then((res) => {
-                console.log(res)
             })
         })
     }
@@ -46,7 +45,7 @@ const Basket = (props) => {
             <div onClick={e => e.stopPropagation()} className={S.modal__content}>
                 <img onClick={() => {
                     props.setActive(false)
-                }} className={S.closeCross} src="https://emojis.wiki/thumbs/emojis/cross-mark.webp"/>
+                }} className={S.closeCross} src={cross}/>
 
                 {data.map((i) => <BasketItem deleteItemToPurchase={deleteItemToPurchase} data={i}/>)}
                 <SubmitPurchase pushOrder={pushOrder} coupon={coupon} total={total}/>

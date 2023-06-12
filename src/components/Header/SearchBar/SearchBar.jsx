@@ -9,8 +9,8 @@ const inputHandler=(e)=>{
         setValue(e.target.value)
 }
     return (
-        <div>
-            <input onBlur={()=>{
+        <div >
+            <input  onBlur={()=>{
                 if(value===''){
                     props.setSearchBar(value)
                 }

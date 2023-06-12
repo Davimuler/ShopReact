@@ -8,9 +8,6 @@ const OneItem = (props) => {
     return (
         <div  className={S.Item}>
             <div>
-
-            </div>
-            <div>
                 <ShowImage image={props.image}/>
             </div>
             <div>

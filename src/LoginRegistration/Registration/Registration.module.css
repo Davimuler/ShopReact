@@ -1,8 +1,10 @@
 .formReg{
    text-align: center;
+    margin:80px
 }
 .formReg input{
     padding: 12px 20px;
     margin: 8px 0;
     width: 400px;
+    border-radius: 3px;
 }

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import S from './Registration.module.css'
 import axios, {apiCreateUser} from '../../api/api.js'
+import {Button} from "@mui/material";
 
 const Reg = (props) => {
     const [fullName, setFullName] = useState('')
@@ -149,7 +150,7 @@ const Reg = (props) => {
             </div>
         </form>
         <div>
-            <button onClick={Registration} disabled={!formValid}>Registration</button>
+            <Button onClick={Registration} disabled={!formValid}>Registration</Button>
         </div>
     </div>
 }

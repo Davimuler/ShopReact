@@ -1,5 +1,4 @@
 .FirstPage{
-    background-color: lightblue;
     display: grid;
     grid-template-areas:"navbar content";
     grid-template-columns: 22% 1fr;
@@ -8,9 +7,13 @@
 }
 
 .content{
+
     grid-area:content;
 }
 .navbar{
     grid-area:navbar;
-    background-color:red;
+    background-color:lightgray;
+    border-right: 1px solid gainsboro;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
 }

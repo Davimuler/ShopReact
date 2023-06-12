@@ -1,8 +1,10 @@
 .LogForm{
+    margin:120px;
     text-align: center;
 }
 .LogForm input{
     padding: 12px 20px;
     margin: 8px 0;
     width: 400px;
+    border-radius: 3px;
 }

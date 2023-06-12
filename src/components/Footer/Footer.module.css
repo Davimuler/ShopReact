@@ -1,2 +1,15 @@
 .MainFooter{
 }
+.link{
+    text-decoration: none;
+    color: blue;
+    font-size: 16px;
+    color: #ffffff;
+}
+.socialIcon{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    height: 100%;
+    margin-right: 5px;
+}

@@ -1,12 +1,8 @@
 import express from 'express'
-import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
-import cors from  'cors'
-import bcrypt from "bcrypt"
+import cors from 'cors'
 import multer from 'multer'
-
-import {validationResult} from 'express-validator'
-import {registerValidation, loginValidation, postCreateValidation} from './Validations/validations.js'
+import {loginValidation, postCreateValidation, registerValidation} from './Validations/validations.js'
 
 import TestModel from './models/Test.js'
 
@@ -15,13 +11,12 @@ import checkAuth from './utils/checkAuth.js'
 
 import *as UserController from './controllers/UserController.js'
 import *as PostController from './controllers/PostController.js'
-import PostModel from "./models/Post.js";
 import ItemModel from './models/Item.js'
 
 import NewItemModel from "./models/NewItem.js";
+import NewItem from "./models/NewItem.js";
 
 import SectionModel from "./models/Sections.js"
-import NewItem from "./models/NewItem.js";
 import CouponModel from "./models/Coupon.js";
 
 
